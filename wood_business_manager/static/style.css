@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+body{font-family:'Hind Siliguri',sans-serif;background:#f5f7fa;color:#1f2937}
+.topbar{background:#173f35}.navbar-brand{letter-spacing:.2px}
+.card{border:0;border-radius:14px;box-shadow:0 4px 18px rgba(20,40,30,.06)}
+.stat{background:#fff;border-radius:14px;padding:18px;height:100%;box-shadow:0 4px 18px rgba(20,40,30,.05);display:flex;flex-direction:column;gap:7px}
+.stat span{color:#667085;font-size:14px}.stat strong{font-size:24px;color:#173f35}.stat.due strong{color:#c0392b}
+.table th{color:#667085;font-weight:600;white-space:nowrap}.table td{vertical-align:middle}
+.form-control,select{padding:10px;border-radius:9px}.btn{border-radius:9px}
+@media print{.topbar,footer,.btn,button{display:none!important}body{background:white}.card,.stat{box-shadow:none;border:1px solid #ddd}}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block title %}ড্যাশবোর্ড | কাঠের হিসাব{% endblock %}
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-4"><div><h2 class="fw-bold">ড্যাশবোর্ড</h2><p class="text-muted mb-0">আপনার ব্যবসার সার্বিক হিসাব</p></div><a class="btn btn-primary" href="/sales/add/">＋ নতুন বিক্রি</a></div>
+<div class="row g-3 mb-4">
+<div class="col-md-3 col-6"><div class="stat"><span>মোট কাস্টমার</span><strong>{{ customer_count }}</strong></div></div>
+<div class="col-md-3 col-6"><div class="stat"><span>মোট বিক্রি</span><strong>৳{{ sales_total|floatformat:2 }}</strong></div></div>
+<div class="col-md-3 col-6"><div class="stat"><span>মোট জমা</span><strong>৳{{ paid_total|floatformat:2 }}</strong></div></div>
+<div class="col-md-3 col-6"><div class="stat due"><span>মোট বকেয়া</span><strong>৳{{ due_total|floatformat:2 }}</strong></div></div>
+</div>
+<div class="row g-4"><div class="col-lg-7"><div class="card p-3"><h5>যাদের কাছে টাকা পাওনা</h5><div class="table-responsive"><table class="table align-middle"><thead><tr><th>নাম</th><th>মোবাইল</th><th class="text-end">বকেয়া</th></tr></thead><tbody>
+{% for c in top_due %}{% if c.due > 0 %}<tr><td><a href="/customers/{{ c.id }}/">{{ c.name }}</a></td><td>{{ c.phone|default:"—" }}</td><td class="text-end fw-bold text-danger">৳{{ c.due|floatformat:2 }}</td></tr>{% endif %}{% empty %}<tr><td colspan="3">এখনো কোনো কাস্টমার নেই।</td></tr>{% endfor %}
+</tbody></table></div></div></div>
+<div class="col-lg-5"><div class="card p-3"><h5>কাঠের স্টক</h5>{% for w in wood_types %}<div class="d-flex justify-content-between border-bottom py-2"><span>{{ w.name }}</span><b>{{ w.quantity }} {{ w.unit }}</b></div>{% empty %}<p class="text-muted">স্টক যোগ করা হয়নি।</p>{% endfor %}<a href="/stock/" class="btn btn-outline-primary mt-3">স্টক পরিচালনা</a></div></div></div>
+{% endblock %}

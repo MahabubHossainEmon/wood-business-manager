@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}
+<div class="d-flex justify-content-between mb-3"><h2>কাস্টমার তালিকা</h2><a class="btn btn-primary" href="/customers/add/">＋ কাস্টমার যোগ</a></div>
+<div class="card p-3"><div class="table-responsive"><table class="table"><thead><tr><th>নাম</th><th>মোবাইল</th><th>ঠিকানা</th><th></th></tr></thead><tbody>
+{% for c in customers %}<tr><td>{{ c.name }}</td><td>{{ c.phone|default:"—" }}</td><td>{{ c.address|default:"—" }}</td><td><a href="/customers/{{ c.id }}/">হিসাব দেখুন</a></td></tr>{% empty %}<tr><td colspan="4">কোনো কাস্টমার নেই।</td></tr>{% endfor %}
+</tbody></table></div></div>{% endblock %}
